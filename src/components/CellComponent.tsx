@@ -3,10 +3,15 @@ import { Cell } from "../models/Cell";
 
 interface CellProps {
   cell: Cell;
+  selected: boolean;
 }
 
-const CellComponent: FC<CellProps> = ({ cell }) => {
-  return <div className={["cell", cell.color].join(" ")}>{cell.figure}</div>;
+const CellComponent: FC<CellProps> = ({ cell, selected }) => {
+  return (
+    <div className={["cell", cell.color, selected ? "selected" : ""].join(" ")}>
+      {cell.figure?.logo && <img src={cell.figure.logo} alt="" />}
+    </div>
+  );
 };
 
 export default CellComponent;
